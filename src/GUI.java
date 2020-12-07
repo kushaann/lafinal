@@ -39,7 +39,6 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         AdjInput = new javax.swing.JTextArea();
-        TypeButton = new javax.swing.JButton();
         AlgorithmType = new javax.swing.JButton();
         RunButton = new javax.swing.JButton();
         EdgesInput = new javax.swing.JTextField();
@@ -50,13 +49,6 @@ public class GUI extends javax.swing.JFrame {
         AdjInput.setColumns(20);
         AdjInput.setRows(5);
         jScrollPane1.setViewportView(AdjInput);
-
-        TypeButton.setText("Road Style");
-        TypeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TypeButtonActionPerformed(evt);
-            }
-        });
 
         AlgorithmType.setText("Most disconnected to most disconnected");
         AlgorithmType.addActionListener(new java.awt.event.ActionListener() {
@@ -88,9 +80,6 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(298, 298, 298)
-                                .addComponent(TypeButton))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(233, 233, 233)
                                 .addComponent(AlgorithmType))
                             .addGroup(layout.createSequentialGroup()
@@ -113,9 +102,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(TypeButton)
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addComponent(AlgorithmType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RunButton)
@@ -124,17 +111,6 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeButtonActionPerformed
-        if(type){
-            type = false;
-            TypeButton.setText("Strength style");
-        }
-        else {
-            type = true;
-            TypeButton.setText("Road Style");
-        }
-    }//GEN-LAST:event_TypeButtonActionPerformed
 
     private void AlgorithmTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlgorithmTypeActionPerformed
         if(algorithmType ==0){
@@ -188,12 +164,9 @@ public class GUI extends javax.swing.JFrame {
                 exec += "inner.py ";
             }
             
-            if(type){
-                exec += "inv";
-            }
-            else {
-                exec += "reg";
-            }
+            exec += "reg";
+            
+           
             exec += " " + Integer.parseInt(EdgesInput.getText().toString());
             System.out.println(exec);
             Process p = Runtime.getRuntime().exec(exec);
@@ -214,10 +187,8 @@ public class GUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
         try{
-            //Process p = Runtime.getRuntime().exec("python showimg.py");
-            if(false){
-                throw new IOException();
-            }
+            Process p = Runtime.getRuntime().exec("python showimg.py");
+            
         }
         catch(IOException e){
             e.printStackTrace();
@@ -273,7 +244,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AlgorithmType;
     private javax.swing.JTextField EdgesInput;
     private javax.swing.JButton RunButton;
-    private javax.swing.JButton TypeButton;
     private javax.swing.JLabel jLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
